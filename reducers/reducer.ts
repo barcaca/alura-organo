@@ -40,6 +40,11 @@ export function reducer(state: State, action: Actions) {
         ...state, // Mantém todas as outras propriedades do estado
         teams: [...state.teams, action.payload], // Adiciona uma nova equipe
       }
+    case ActionTypes.DELETE_TEAM:
+      return {
+        ...state, // Mantém todas as outras propriedades do estado
+        teams: state.teams.filter(team => team.name !== action.payload),
+      }
     case ActionTypes.CHANGE_TEAM_COLOR:
       return {
         ...state, // Mantém todas as outras propriedades do estado

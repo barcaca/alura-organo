@@ -6,6 +6,7 @@ import {
   addTeamAction,
   changeTeamColorAction,
   deleteCollaboratorAction,
+  deleteTeamAction,
   setCollaboratorsAction,
   setTeamsAction,
   toggleCollaboratorFavoriteAction,
@@ -21,6 +22,7 @@ type CollaboratorContextType = {
   removeCollaborator: (collaboratorId: string) => void
   favoriteCollaborator: (collaboratorId: string) => void
   addTeam: (newTeam: Team) => void
+  deleteTeam: (teamId: string) => void
   changeTeamColor: (team: Team) => void
 }
 
@@ -59,6 +61,10 @@ export function CollaboratorProvider({
 
   const addTeam = (newTeam: Team) => {
     dispatch(addTeamAction(newTeam))
+  }
+
+  const deleteTeam = (teamId: string) => {
+    dispatch(deleteTeamAction(teamId))
   }
 
   const changeTeamColor = (team: Team) => {
@@ -116,6 +122,7 @@ export function CollaboratorProvider({
     removeCollaborator,
     favoriteCollaborator,
     addTeam,
+    deleteTeam,
     changeTeamColor,
   }
 

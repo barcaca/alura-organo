@@ -7,6 +7,7 @@ export enum ActionTypes {
   TOGGLE_FAVORITE_COLLABORATOR = 'TOGGLE_FAVORITE_COLLABORATOR',
   SET_TEAMS = 'SET_TEAMS',
   ADD_NEW_TEAM = 'ADD_NEW_TEAM',
+  DELETE_TEAM = 'DELETE_TEAM',
   CHANGE_TEAM_COLOR = 'CHANGE_TEAM_COLOR',
 }
 
@@ -34,6 +35,10 @@ export type Actions =
   | {
       type: ActionTypes.ADD_NEW_TEAM
       payload: Team
+    }
+  | {
+      type: ActionTypes.DELETE_TEAM
+      payload: string
     }
   | {
       type: ActionTypes.CHANGE_TEAM_COLOR
@@ -74,6 +79,12 @@ export const addTeamAction = (team: Team) =>
   ({
     type: ActionTypes.ADD_NEW_TEAM,
     payload: team,
+  }) satisfies Actions
+
+export const deleteTeamAction = (teamId: string) =>
+  ({
+    type: ActionTypes.DELETE_TEAM,
+    payload: teamId,
   }) satisfies Actions
 
 export const changeTeamColorAction = (team: Team) =>
