@@ -43,7 +43,7 @@ Este projeto é uma aplicação desenvolvida no curso da OracleOne-Alura. Organo
 
 ## 🔗 Links
 
-- [Live Site URL](https://alura-organo-phi.vercel.app)
+- [Live Site URL](https://alura-organo-barcaca.vercel.app)
 
 ## 🏆 Conclusion
 
