@@ -31,7 +31,10 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>
 
 export function TeamRegistrationForm() {
-  const { teams, addTeam } = useCollaborator()
+  const {
+    state: { teams },
+    addTeam,
+  } = useCollaborator()
   const [selectedColor, setSelectedColor] = useState('#000000')
 
   const form = useForm<FormSchema>({

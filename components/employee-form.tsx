@@ -45,7 +45,10 @@ const defaultValues = {
 }
 
 export function EmployeeForm() {
-  const { addCollaborator, teams } = useCollaborator()
+  const {
+    addCollaborator,
+    state: { teams },
+  } = useCollaborator()
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues,

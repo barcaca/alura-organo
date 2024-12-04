@@ -7,24 +7,25 @@ import { Card, CardContent, CardTitle } from './ui/card'
 import { Input } from './ui/input'
 
 export function CollaboratorCards() {
-  const {
-    teams,
-    collaborators,
-    removeCollaborator,
-    changeTeamColor,
-    favoriteCollaborator,
-  } = useCollaborator()
+  const { state, removeCollaborator, changeTeamColor, favoriteCollaborator } =
+    useCollaborator()
 
   function handleRemoveCollaborator(collaboratorId: string) {
     removeCollaborator(collaboratorId)
   }
 
   function handleChangeTeamColor(teamId: string, color: string) {
-    changeTeamColor(teamId, color)
+    const team = {
+      name: teamId,
+      color,
+    }
+    changeTeamColor(team)
   }
 
-  return teams.map(team => {
-    const teamCollaborators = collaborators.filter(c => c.team === team.name)
+  return state.teams.map(team => {
+    const teamCollaborators = state.collaborators.filter(
+      c => c.team === team.name
+    )
     if (teamCollaborators.length === 0) return null
 
     return (

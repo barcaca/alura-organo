@@ -23,6 +23,7 @@ export default function Banner() {
                 src="/organo-example.png"
                 alt="Organizational chart example"
                 fill
+                priority
                 className="h-full w-full rounded-lg object-contain "
               />
               <figcaption className="sr-only">
