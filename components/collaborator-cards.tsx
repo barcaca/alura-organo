@@ -1,7 +1,10 @@
+'use client'
 import { useCollaborator } from '@/contexts/collaborator-context'
 import { HeartIcon, Trash2Icon } from 'lucide-react'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import imagePlaceholder from '../public/placeholder-image.svg'
+import { CollaboratorCardSkeleton } from './skeletons'
 import { Button } from './ui/button'
 import { Card, CardContent, CardTitle } from './ui/card'
 import { Input } from './ui/input'
@@ -9,6 +12,7 @@ import { Input } from './ui/input'
 export function CollaboratorCards() {
   const { state, removeCollaborator, changeTeamColor, favoriteCollaborator } =
     useCollaborator()
+  const [isLoading, setIsLoading] = useState(true)
 
   function handleRemoveCollaborator(collaboratorId: string) {
     removeCollaborator(collaboratorId)
@@ -21,6 +25,12 @@ export function CollaboratorCards() {
     }
     changeTeamColor(team)
   }
+
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 1000)
+  }, [])
+
+  if (isLoading) return <CollaboratorCardSkeleton />
 
   return state.teams.map(team => {
     const teamCollaborators = state.collaborators.filter(
